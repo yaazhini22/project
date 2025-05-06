@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 0; 
+            padding: 0; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center; 
+            height: 95vh; 
+            background-color: #dadde4; 
+            background-image:url('https://i.pinimg.com/736x/44/ad/45/44ad459f6036319a7f02b736ab8feaaf.jpg');
+            background-repeat:no-repeat;
+            background-size:cover;
+        }
+        header { 
+            padding: 20px; 
+            text-align: center; 
+            background-color: #f3f1ecc9; 
+            font-family: 'Times New Roman', Times, serif; 
+            width: 90%; 
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+            margin: 0;
+        }
+        header div { 
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+        }
+        header img { 
+            max-width: 100px; 
+            height: auto; 
+            margin-right: 20px; 
+        }
+        h1 { 
+            margin: 0; 
+            font-size: 28px; 
+        }
+        h2 {
+            text-align: center;
+            text-decoration: dotted;
+            font-size: 28px;
+            color: #17284c;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            padding: 50px;
+            margin-top: -50px; 
+        }
+        form {
+            background-color: #17284c;
+            padding: 30px 50px;
+            border-radius: 30px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        label, input {
+            display: block;
+            width: 100%;
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
+        input[type="email"], input[type="text"], input[type="password"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            color: #000000;
+        }
+        input[type="submit"] {
+            background-color: #1f58a2;
+            color: #f8f8f8;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #00b6cb;
+        }
+        .flashes {
+            list-style-type: none;
+            padding: 0;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    
+<header>
+    <div>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Sri_Sivasubramaniya_Nadar_College_of_Engineering.svg/800px-Sri_Sivasubramaniya_Nadar_College_of_Engineering.svg.png" alt="SSN College of Engineering">
+        <h1>HELP DESK</h1>
+    </div>
+</header>
+
+<h2>Sign Up</h2>
+<div class="container">
+    <form action="/submit_signup" method="POST">
+        <label for="username">Username (SSN Email):</label>
+        <input type="email" id="username" name="email" placeholder="Username" pattern="[a-zA-Z0-9._%+-]+@ssn.edu.in" required>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" placeholder="Name" required>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" placeholder="Password" required>
+        <input type="submit" value="Submit">
+    </form>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul class="flashes">
+          {% for message in messages %}
+            <li>{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+</div>
+
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opened Tickets</title>
+    <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-image: url('https://i.pinimg.com/564x/4f/4d/90/4f4d909fc4aa8817562bc63aa3b0dac1.jpg');
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+        header { padding: 10px; text-align: center; background-color: #e3e9f2ec; font-family: 'Times New Roman', Times, serif; }
+        header div { display: flex; align-items: center; justify-content: center; }
+        header img { max-width: 10%; height: auto; margin-right: 20px; }
+        h1 { margin: 0; font-size: 28px; }
+        h2 { text-align: center; margin-top: 20px; }
+        .table-container { margin-top: 20px;
+        color: #0e0e0e; 
+    background-color: #ffffff;}
+        table { border-collapse: collapse; width: 100%; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        .button-container { text-align: center; margin-top: 20px; }
+        .button { background-color: #0b2541; color: #fff; padding: 10px 20px; border-radius: 5px; text-decoration: none; margin: 10px; display: inline-block; }
+        .button:hover { background-color: #0056b3; }
+    </style>
+</head>
+<body>
+    
+<header>
+    <div>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Sri_Sivasubramaniya_Nadar_College_of_Engineering.svg/800px-Sri_Sivasubramaniya_Nadar_College_of_Engineering.svg.png" alt="SSN College of Engineering">
+        <h1>HELP DESK</h1>
+    </div>
+</header>
+
+<div class="button-container">
+    <a href="{{url_for('dashboard', name=name)}}" class="button">Your dashboard</a>
+    <a href="{{ url_for('closed_tickets',name=name) }}" class="button">View Closed Tickets</a>
+    <a href="{{ url_for('home') }}" class="button">Sign out</a>
+</div>
+
+<h2>Opened Tickets for {{name}}</h2>
+
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>Ticket ID</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Subject</th>
+                <th>Department</th>
+                <th>Location</th>
+                <th>Room</th>
+                <th>Mobile</th>
+                <th>Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for ticket in tickets %}
+            <tr>
+                <td>{{ ticket.id }}</td>
+                <td>{{ ticket.date }}</td>
+                <td>{{ ticket.status }}</td>
+                <td>{{ ticket.subject }}</td>
+                <td>{{ ticket.department }}</td>
+                <td>{{ ticket.location }}</td>
+                <td>{{ ticket.room }}</td>
+                <td>{{ ticket.mobile }}</td>
+                <td>{{ ticket.time }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+</body>
+</html>

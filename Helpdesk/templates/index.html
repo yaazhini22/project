@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Help Desk</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        header { padding: 20px; text-align: center; background-color: #f1f1f1; font-family: 'Times New Roman', Times, serif; }
+        header div { display: flex; align-items: center; justify-content: center; }
+        header img { max-width: 10%; height: auto; margin-right: 20px; }
+        h1 { margin: 0; font-size: 28px; }
+        nav { margin: 30px; text-align: center; }
+        nav ul { list-style-type: none; padding: 0; display: inline-block; }
+        nav ul li { display: inline; margin-right: 30px; }
+        nav ul li a { text-decoration: none; color: #333; }
+        .button { background-color: #007bff; color: #fff; padding: 10px 20px; border-radius: 5px; text-decoration: none; }
+        .button:hover { background-color: #0056b3; }
+    </style>
+</head>
+<body>
+
+<header>
+    <div>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Sri_Sivasubramaniya_Nadar_College_of_Engineering.svg/800px-Sri_Sivasubramaniya_Nadar_College_of_Engineering.svg.png" alt="SSN College of Engineering">
+        <h1>HELP DESK</h1>
+    </div>
+</header>
+
+<hr>
+<h2>Help Desk Dashboard</h2>
+<hr>
+
+<nav>
+    <ul>
+        <a href="{{ url_for('home') }}" class="button">Home</a>
+
+        <li><a href="{{ url_for('opened_tickets', name=username) }}" class="button">Opened Tickets</a></li>
+        <li><a href="{{ url_for('closed_tickets', name=username) }}" class="button">Closed Tickets</a></li>
+    </ul>
+</nav>
+
+</body>
+</html>

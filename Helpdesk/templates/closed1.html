@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closed Tickets</title>
+    <style>
+        body { font-family: Arial, sans-serif; 
+        background-image: url('https://i.pinimg.com/564x/35/8d/bd/358dbd83bfe8804cf65fcf39741cf100.jpg');
+    background-repeat: no-repeat;
+background-size: cover;}
+        header { padding: 10px; text-align: center; background-color: #f1f1f1; font-family: 'Times New Roman', Times, serif; }
+        header div { display: flex; align-items: center; justify-content: center; }
+        header img { max-width: 8%; height: auto; margin-right: 20px; }
+        h1 { margin: 0; font-size: 28px; }
+        h2 { text-align: center; margin-top: 20px; }
+        .table-container { margin-top: 20px;
+        background-color: #ffffff; }
+        table { border-collapse: collapse; width: 100%; margin-top: 20px; }
+        th, td { border: 1px solid #0d0d0d; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        .button-container { text-align: center; margin-top: 20px; }
+        .button { background-color: #0d2568; color: #fff; padding: 10px 20px; border-radius: 5px; text-decoration: none; margin: 10px; display: inline-block; align-items: center; }
+        .button:hover { background-color: #0056b3; }
+        .no-tickets { text-align: center; margin-top: 20px; color: #ff0000; font-size: 20px; }
+    </style>
+</head>
+<body>
+    
+<header>
+    <div>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Sri_Sivasubramaniya_Nadar_College_of_Engineering.svg/800px-Sri_Sivasubramaniya_Nadar_College_of_Engineering.svg.png" alt="SSN College of Engineering">
+        <h1>HELP DESK</h1>
+    </div>
+</header>
+
+<a href="{{url_for('dashboard', name=name)}}" class="button">Your dashboard</a>
+<a href="{{ url_for('home') }}" class="button">Sign out</a>
+
+<h2>Closed Tickets for {{name }}</h2>
+
+<div class="table-container">
+    {% if tickets %}
+    <table>
+        <thead>
+            <tr>
+                <th>Ticket ID</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Subject</th>
+                <th>Department</th>
+                <th>Location</th>
+                <th>Room</th>
+                <th>Mobile</th>
+                <th>Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for ticket in tickets %}
+            <tr>
+                <td>{{ ticket.id }}</td>
+                <td>{{ ticket.date }}</td>
+                <td>{{ ticket.status }}</td>
+                <td>{{ ticket.subject }}</td>
+                <td>{{ ticket.department }}</td>
+                <td>{{ ticket.location }}</td>
+                <td>{{ ticket.room }}</td>
+                <td>{{ ticket.mobile }}</td>
+                <td>{{ ticket.time }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p class="no-tickets">No tickets found</p>
+    {% endif %}
+</div>
+</body>
+</html>

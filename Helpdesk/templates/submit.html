@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Submit Ticket</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://i.pinimg.com/564x/6f/64/6d/6f646df460a31188a679f0fbf0564e39.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            margin: 0;
+        }
+
+        header {
+            padding: 8px;
+            text-align: center;
+            background-color: #fbfaf7ec;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        header div {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        header img {
+            max-width: 10%;
+            height: auto;
+            margin-right: 20px;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 28px;
+            
+        
+        }
+        h2{color: #0f0e0e;
+        font-style: normal;
+    background-color: rgb(247, 248, 249);}
+
+        hr {
+            margin: 20px 0;
+            border: none;
+            border-top: 1px solid #ccc;
+        }
+
+        .form-container {
+            background-color:#d0daece6;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 50%;
+            margin: 20px auto;
+            padding: 20px;
+        }
+
+        form {
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        input[type="time"],
+        input[type="email"],
+        input[type="tel"],
+        select {
+            width: 100%;
+            padding: 3px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        input[type="submit"] {
+            background-color: #6284b3;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .message {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Sri_Sivasubramaniya_Nadar_College_of_Engineering.svg/800px-Sri_Sivasubramaniya_Nadar_College_of_Engineering.svg.png" alt="SSN College of Engineering">
+            <h1>HELP DESK</h1>
+        </div>
+    </header>
+
+    <hr>
+    <h2 style="text-align:center;">TICKET SUBMISSION</h2>
+    <hr>
+
+    <div class="form-container">
+        <form id="ticketForm" action="{{ url_for('submit_ticket') }}" method="POST">
+            <input type="hidden" id="id" name="id" value="{{ ticket_id }}">
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br><br>  <!-- Display email and make it readonly -->
+            
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required><br><br>
+        
+            <label for="date">Date (dd/mm/yyyy):</label>
+            <input type="text" id="date" name="date" pattern="\d{1,2}/\d{1,2}/\d{4}" title="Please enter a date in dd/mm/yyyy format" required><br><br>
+        
+            <label for="subject">Subject:</label>
+            <input type="text" id="subject" name="subject" required><br><br>
+        
+            <label for="department">Department:</label>
+            <select id="department" name="department" required>
+                <option value="Electricity">Electricity</option>
+                <option value="Plumbing">Plumbing</option>
+                <option value="Finance">Finance</option>
+                <option value="AC Problem">AC Problem</option>
+                <option value="Network">Network</option>
+                <option value="Electrical">Electrical</option>
+                <option value="Housekeeping">Housekeeping</option>
+                <option value="IT Support">IT Support</option>
+                <option value="Maintenance">Maintenance</option>
+                <option value="Security">Security</option>
+                <option value="Other">Other</option>
+            </select><br><br>
+        
+            <label for="location">Location:</label>
+            <select id="location" name="location" required>
+                <option value="Department">Department</option>
+                <option value="Gents Hostel">Gents Hostel</option>
+                <option value="Ladies Hostel">Ladies Hostel</option>
+            </select><br><br>
+        
+            <label for="room">Room Number:</label>
+            <input type="text" id="room" name="room"><br><br>
+        
+            <label for="mobile">Mobile Number:</label>
+            <input type="text" id="mobile" name="mobile" required><br><br>
+        
+            <label for="time">Preferred Time:</label>
+            <input type="time" id="time" name="time" required><br><br>
+        
+            <input type="submit" value="Submit">
+        </form>
+            
+        {% if submitted %}
+        <p class="message">Ticket submitted successfully!</p>
+        {% endif %}
+    </div>
+
+    <script>
+        // Set current date as default value for date input
+        var dateInput = document.getElementById('date');
+        var today = new Date();
+        var dd = today.getDate();
+        var mm = today.getMonth() + 1; // January is 0!
+        var yyyy = today.getFullYear();
+
+        if (dd < 10) {
+            dd = '0' + dd;
+        }
+
+        if (mm < 10) {
+            mm = '0' + mm;
+        }
+
+        dateInput.value = dd + '/' + mm + '/' + yyyy;
+    </script>
+</body>
+</html>

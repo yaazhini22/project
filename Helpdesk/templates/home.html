@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help Desk Home Page</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            background-image: url("https://i.pinimg.com/564x/49/c7/b5/49c7b5cc8094b024906fb7ca5ef9dff6.jpg");
+          background-size: cover; 
+            background-repeat: no-repeat;
+            height: 95vh ; 
+            margin: 0;
+            padding: 0;
+        }
+
+        header { 
+            padding: 5px; 
+            text-align: center; 
+            background-color: #11318900;
+            font-family: 'Times New Roman', Times, serif; 
+        }
+        header div { 
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+        }
+        header img { 
+            max-width: 5%; 
+            height: auto; 
+            margin-right: 5px; 
+        }
+        h1 { 
+            margin: 0; 
+            font-size: 40px; 
+            color: rgb(22, 10, 55); /* Ensure header text is visible */
+        }
+        nav { 
+            margin: 10px; 
+        }
+        nav ul { 
+            list-style-type: none; 
+            padding: 0; 
+        }
+        nav ul li { 
+            display: inline; 
+            margin-right: 50px; 
+        }
+        nav ul li a, nav ul li button { 
+            text-decoration: none; 
+            color: #ffffffe2; 
+            background-color: #d39a2f; 
+            padding: 10px 10px; 
+            border-radius: 5px; 
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        nav ul li a:hover, nav ul li button:hover { 
+            background-color: #ce791d; 
+        }
+        .nav-box { 
+            color: rgba(255, 255, 255, 0.834); 
+            padding: 20px; 
+            border-radius: 5px; 
+        }
+        .nav-box ul { 
+            list-style-type: none; 
+            padding: 0; 
+        }
+        .nav-box ul li { 
+            margin-bottom: 5px; 
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; 
+        }
+        .button { 
+            background-color: #041060; 
+            color: #fff; 
+            padding: 10px 20px; 
+            border-radius: 5px; 
+            text-decoration: none; 
+            align-self:center;
+        }
+        .button:hover { 
+            background-color: #062a61; 
+        }
+        .useful-links { 
+            background-color: rgba(249, 249, 249, 0.8); 
+            padding: 20px; 
+            border-radius: 5px; 
+            margin-top: 20px; 
+        }
+        .useful-links h3 { 
+            margin-top: 0; 
+        }
+        .small-img { 
+            max-width: 50px; 
+            height: auto; 
+        }
+        section { 
+    background-color: rgba(254, 251, 242, 0.951); 
+    padding: 3px; 
+    border-radius: 5px; 
+    margin: 5px auto; 
+    max-width: 90%; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}
+
+
+        #home-btn {
+            padding: 6px 20px;
+        }
+    </style>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    
+
+<header>
+    <div class="box">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Sri_Sivasubramaniya_Nadar_College_of_Engineering.svg/800px-Sri_Sivasubramaniya_Nadar_College_of_Engineering.svg.png" alt="SSN College of Engineering">
+        <h1>HELP DESK</h1>
+    </div>
+</header>
+
+<nav>
+    <div class="nav-box">
+        <ul>    
+            <li><a href="{{ url_for('home') }}" class="button">Home</a></li>
+            <li><a href="{{ url_for('sign_in') }}" class="button">Sign in</a></li>
+            <li><a href="{{ url_for('signup_form') }}" class="button">Sign up</a></li>
+        </ul>
+    </div>
+</nav>
+
+<section>
+    <h2>SSN-Chennai</h2>
+    <h3>Helpdesk</h3>
+    <p>Please use this portal to log an incident for any issues you face or observe. Examples are System not working, Internet / Wi-Fi issues, UPS, Electrical / Plumbing, RO Water, Intercom, AC, Transport, Attendance, Cafeteria, etc. The process is simple.</p>
+    <p>1) Sign in  using Digital ID Credentials (same as LMS/ERP).</p>
+    <p>2) If you forgot your password, use this link - <a href="https://passwordreset.microsoftonline.com/">https://passwordreset.microsoftonline.com/</a></p>
+    <p>3) Steps for Incident Logging:</p>
+    <ol>
+        <li>Click "Sign In"</li>
+        <li>Sign in using your Digital ID credentials</li>
+        <li>Select the appropriate Help Topic</li>
+        <li>Fill in all the mandatory fields</li>
+        <li>Click "Submit"</li>
+    </ol>
+    <p>4) To check the status/updates to your tickets,  click on "Veiw Tickets" on the  menu bar.</p>
+    
+    <div class="useful-links">
+        <h3>Useful Links:</h3>
+        <a href="https://lms.ssn.edu.in/" class="button">LMS</a>
+        <a href="https://academicerp.ssn.edu.in/" class="button">Academic ERP</a>
+        <a href="https://hr-erp.shivnadarfoundation.org/Adrenalin/Login.aspx" class="button">HR ERP</a>
+        <a href="https://snfinfohub.org/" class="button">Info Hub</a>
+    </div>
+</section>
+
+</body>
+</html>

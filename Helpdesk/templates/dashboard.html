@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        body { font-family: Arial, sans-serif;
+            background-image: url('https://i.pinimg.com/736x/b6/04/18/b6041880073afe4181e360294e79c5eb.jpg');
+            background-size:cover;
+            background-position: 20px -1900px;
+            background-repeat: no-repeat;
+            
+         }
+        header { padding-top: 10px; text-align: center; background-color: #f1f1f1d5; font-family: 'Times New Roman', Times, serif; }
+        header div { display: flex; align-items: center; justify-content: center; }
+        header img { max-width: 10%; height: auto; margin-right: 20px; }
+        h1 { margin: 0; font-size: 30px; }
+        h2 { text-align: center; font-size: 25px; }
+        .button-container { text-align: center; margin-top: 30px; }
+        .button { background-color: #041723; color: #fff; padding: 10px 20px; border-radius: 5px; text-decoration: none; margin: 10px; display: inline-block; }
+        .button:hover { background-color: #0056b3; }
+    </style>
+</head>
+<body>
+    
+<header>
+    <div>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Sri_Sivasubramaniya_Nadar_College_of_Engineering.svg/800px-Sri_Sivasubramaniya_Nadar_College_of_Engineering.svg.png" alt="SSN College of Engineering">
+        <h1>HELP DESK</h1>
+    </div>
+</header>
+
+<h2>Welcome</h2>
+
+<div class="button-container">
+    <a href="{{ url_for('home') }}" class="button">Home</a>
+    <a href="{{ url_for('submit_page') }}" class="button">Open Ticket</a>
+    <a href="{{ url_for('opened_tickets',name=name) }}" class="button">View Tickets</a>
+</div>
+
+</body>
+</html>

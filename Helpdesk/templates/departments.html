@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Departments</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e4e1e1da;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+        }
+        h1 {
+            color: #333;
+            font-style:normal;
+            font-size: 30;
+    
+            
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .department {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(14, 13, 13, 0.921);
+            cursor: pointer;
+            text-align: center;
+            color: rgb(255, 255, 255);
+            text-decoration: none;
+        }
+        .department img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease, margin-top 0.3s ease;
+        }
+        .department:hover img {
+            transform: scale(1.1);
+            margin-top: -10px;
+        }
+        .department span {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(10, 9, 9, 0.759);
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>DEPARTMENTS</h1>
+    <div class="container">
+        <a href="{{ url_for('view_tickets_by_department', department='Electricity') }}" class="department">
+            <img src="https://i.pinimg.com/564x/de/b8/fd/deb8fdb22422b089cddc027bddfe441e.jpg" alt="Electricity">
+            <span>Electricity</span>
+        </a>
+        <a href="{{ url_for('view_tickets_by_department', department='Plumbing') }}" class="department">
+            <img src="https://i.pinimg.com/564x/e5/42/0e/e5420e87b285c4bc9692a246104c47a4.jpg" alt="Plumbing">
+            <span>Plumbing</span>
+        </a>
+        <a href="{{ url_for('view_tickets_by_department', department='Finance') }}" class="department">
+            <img src="https://i.pinimg.com/564x/2c/c7/f7/2cc7f7614035a18805f489690f894491.jpg" alt="Finance">
+            <span>Finance</span>
+        </a>
+        <a href="{{ url_for('view_tickets_by_department', department='AC Problem') }}" class="department">
+            <img src="https://i.pinimg.com/564x/30/0a/db/300adb389cd7f3ccf7b17d548b3904ef.jpg" alt="AC Problem">
+            <span>AC Problem</span>
+        </a>
+        <a href="{{ url_for('view_tickets_by_department', department='Network') }}" class="department">
+            <img src="https://i.pinimg.com/564x/d0/e4/40/d0e440dd0c9a15fd7dff42498883aa2f.jpg" alt="Network">
+            <span>Network</span>
+        </a>
+        <a href="{{ url_for('view_tickets_by_department', department='Electrical') }}" class="department">
+            <img src="https://i.pinimg.com/564x/1b/e1/64/1be164d338669f78503e6873c526d995.jpg" alt="Electrical">
+            <span>Electrical</span>
+        </a>
+        <a href="{{ url_for('view_tickets_by_department', department='Housekeeping') }}" class="department">
+            <img src="https://i.pinimg.com/564x/92/25/f6/9225f636e49c78c33570032b734bfd2a.jpg" alt="Housekeeping">
+            <span>Housekeeping</span>
+        </a>
+        <a href="{{ url_for('view_tickets_by_department', department='IT Support') }}" class="department">
+            <img src="https://i.pinimg.com/564x/0b/ef/5f/0bef5f5e52ba4bcf36865eba75a5ebb7.jpg" alt="IT Support">
+            <span>IT Support</span>
+        </a>
+        <a href="{{ url_for('view_tickets_by_department', department='Maintenance') }}" class="department">
+            <img src="https://i.pinimg.com/564x/ee/d7/dd/eed7dd62bce2de835038b748492721bf.jpg" alt="Maintenance">
+            <span>Maintenance</span>
+        </a>
+        <a href="{{ url_for('view_tickets_by_department', department='Security') }}" class="department">
+            <img src="https://i.pinimg.com/564x/49/f7/ea/49f7ea3f794ce6b98bd6e60a28355cd0.jpg" alt="Security">
+            <span>Security</span>
+        </a>
+    </div>
+</body>
+</html>
+
+
+

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ticket Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://i.pinimg.com/564x/19/9e/e0/199ee05ad74aa4e363e0895c20780264.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        header {
+            padding: 20px;
+            text-align: center;
+            background-color: #f1f1f1;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        header div {
+            display: flex;
+            align-items: center;
+        }
+
+        header img {
+            max-width: 100px; /* Adjust according to your preference */
+            height: auto;
+            margin-right: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 0;
+            font-size: 28px;
+        
+            
+        }
+
+        .ticket-container {
+            width: 80%; 
+            max-width: 600px;
+            margin: 20px auto;
+            text-align: left;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #ffffff;
+        }
+
+        .ticket-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .ticket-details {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .ticket-details div {
+            margin-bottom: 10px;
+        }
+
+        .ticket-details div span {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .button {
+            background-color: #051a5c;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        .button:hover {
+            background-color: #45a049;
+        }
+
+        nav {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Sri_Sivasubramaniya_Nadar_College_of_Engineering.svg/800px-Sri_Sivasubramaniya_Nadar_College_of_Engineering.svg.png" alt="SSN College of Engineering" />
+        <h1>HELP DESK</h1>
+    </div>
+</header>
+
+<nav>
+    <ul>
+        {% if ticket %}
+        <li><a href="{{url_for('dashboard', name=name)}}" class="button">Your dashboard</a></li>
+        <li><a href="{{ url_for('opened_tickets', name=ticket['name']) }}" class="button">Opened Tickets</a></li>
+        <li><a href="{{ url_for('closed_tickets', name=ticket['name']) }}" class="button">Closed Tickets</a></li>
+        <li><a href="{{ url_for('home') }}" class="button">Sign out</a></li>
+        {% endif %}
+    </ul>
+</nav>
+
+<div class="ticket-container">
+    {% if ticket %}
+    <h2>Ticket-{{ ticket['id'] }}</h2>
+
+    <div class="ticket-details">
+        <div><span>Name:</span> {{ ticket['name'] }}</div>
+        <div><span>Date:</span> {{ ticket['date'] }}</div>
+        <div><span>Status:</span> {{ ticket['status'] }}</div>
+        <div><span>Subject:</span> {{ ticket['subject'] }}</div>
+        <div><span>Department:</span> {{ ticket['department'] }}</div>
+    </div>
+    {% else %}
+    <h2>Ticket Not Found</h2>
+    {% endif %}
+</div>
+
+</body>
+</html>

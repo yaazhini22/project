@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Closed Tickets</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+            }
+    
+            header {
+                padding: 20px;
+                text-align: center;
+                background-color: #f1f1f1;
+                font-family: 'Times New Roman', Times, serif;
+            }
+    
+            header div {
+                display: flex;
+                align-items: center;
+            }
+    
+            header img {
+                max-width: 20%;
+                height: auto;
+                margin-right: 20px;
+            }
+    
+            h1 {
+                margin: 0;
+                font-size: 28px;
+            }
+    
+            .ticket-container {
+                width: 80%;
+                margin: 20px auto;
+                text-align: center;
+                border: 2px solid #ccc;
+                border-radius: 10px;
+                padding: 20px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+    
+            table {
+                border-collapse: collapse;
+                width: 100%;
+                margin-top: 20px;
+            }
+    
+            th,
+            td {
+                border: 1px solid #ddd;
+                padding: 8px;
+                text-align: left;
+            }
+    
+            th {
+                background-color: #f2f2f2;
+            }
+    
+            .button {
+                background-color: #1f05b1;
+                color: white;
+                padding: 10px 20px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                border-radius: 5px;
+                margin-top: 10px;
+            }
+    
+            .button:hover {
+                background-color: #45a049;
+            }
+    
+            nav {
+                text-align: center;
+                margin-top: 20px;
+            }
+    
+            nav ul {
+                list-style-type: none;
+                padding: 0;
+            }
+    
+            nav ul li {
+                display: inline;
+                margin-right: 10px;
+            }
+        </style>
+    </head>
+    <body>
+    
+    <header>
+        <div>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Sri_Sivasubramaniya_Nadar_College_of_Engineering.svg/800px-Sri_Sivasubramaniya_Nadar_College_of_Engineering.svg.png" alt="SSN College of Engineering">
+            <h1>HELP DESK</h1>
+        </div>
+    </header>
+<body>
+<hr>
+<a href="{{url_for('dashboard', name=name)}}" class="button">Your dashboard</a>
+<a href="{{ url_for('home') }}" class="button">Sign out</a>
+
+
+
+<div class="ticket-container">
+    <h2 style="text-align: center;">Closed Tickets for {{ name }}</h2>
+
+    {% if not tickets %}
+        <p>No closed tickets found for '{{ name }}'.</p>
+    {% else %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Ticket Number</th>
+                    <th>Name</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                    <th>Subject</th>
+                    <th>Department</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for ticket in tickets %}
+                <tr>
+                    <td>{{ ticket['id'] }}</td>
+                    <td>{{ ticket['name'] }}</td>
+                    <td>{{ ticket['date'] }}</td>
+                    <td>{{ ticket['status'] }}</td>
+                    <td>{{ ticket['subject'] }}</td>
+                    <td>{{ ticket['department'] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+</div>
+
+</body>
+</html>

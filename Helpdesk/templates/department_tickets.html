@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tickets by Department</title>
+    <style>
+        /* Add your custom styles here */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            background-image: url('https://i.pinimg.com/564x/64/21/41/642141cfd02340580bdc303d56401333.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        h1{text-align: center;}
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            overflow: hidden;
+            padding: 0 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            background-color: #f2f2f2;
+        }
+        th, td {
+            border: 1px solid #0e0d0d;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .back-link {
+            margin-top: 10px;
+            display: inline-block;
+            text-decoration: none;
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Tickets by Department: {{ department }}</h1>
+        <div id="tickets">
+            {% if tickets and tickets|length > 0 %}
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Ticket ID</th>
+                            <th>Name</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                            <th>Subject</th>
+                            <th>Location</th>
+                            <th>Room</th>
+                            <th>Mobile</th>
+                            <th>Time</th>
+                            <th>Priority</th>
+                            <th>Actions</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for ticket in tickets %}
+                            {% if ticket.department == department %}
+                                <tr>
+                                    <td>{{ ticket.id }}</td>
+                                    <td>{{ ticket.name }}</td>
+                                    <td>{{ ticket.date }}</td>
+                                    <td>{{ ticket.status }}</td>
+                                    <td>{{ ticket.subject }}</td>
+                                    <td>{{ ticket.location }}</td>
+                                    <td>{{ ticket.room }}</td>
+                                    <td>{{ ticket.mobile }}</td>
+                                    <td>{{ ticket.time }}</td>
+                                    <td class="priority">{{ '⭐' if ticket.priority }}</td>
+                                    <td>
+                                        <!-- Update form for ticket status -->
+                                        <form action="{{ url_for('admin_edit_ticket', ticket_id=ticket.id) }}" method="post" style="display: inline;">
+                                            <select name="status" class="change-status-select">
+                                                <option value="Opened">Opened</option>
+                                                <option value="Closed">Closed</option>
+                                            </select>
+                                            <button type="submit" class="change-status-btn">Change Status</button>
+                                        </form>
+                                        <form action="{{ url_for('mark_priority', ticket_id=ticket.id) }}" method="post" style="display: inline;">
+                                            <button type="submit" class="mark-priority-btn">{% if ticket.priority %} Remove Priority {% else %} Mark Priority {% endif %}</button>
+                                        </form>
+                                    </td>
+                                                        </tr>
+                            {% endif %}
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p>No tickets found for department: <strong>{{ department }}</strong>.</p>
+            {% endif %}
+        </div>
+        <a class="back-link" href="{{ url_for('departments') }}">Back to Departments</a>
+    </div>
+</body>
+</html>
